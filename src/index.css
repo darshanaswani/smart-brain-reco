@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, rgb(89, 215, 89), rgb(211, 228, 33));
+  font-family: "Courier New", Courier, monospace;
+}
+button {
+  cursor: pointer;
 }
 
 code {
