@@ -93,7 +93,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch("http://localhost:5000/imageurl", {
+    fetch(`http://${process.env.REACT_APP_API_URL}/imageurl`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch("http://localhost:5000/image", {
+          fetch(`http://${process.env.REACT_APP_API_URL}/image`, {
             method: "put",
             headers: {
               "Content-Type": "application/json",
@@ -147,7 +147,7 @@ class App extends Component {
     const token = window.sessionStorage.getItem("token");
 
     if (token) {
-      fetch("http://localhost:5000/signin", {
+      fetch(`http://${process.env.REACT_APP_API_URL}/signin`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -157,13 +157,16 @@ class App extends Component {
         .then((resp) => resp.json())
         .then((data) => {
           if (data && data.id) {
-            fetch(`http://localhost:5000/profile/${data.id}`, {
-              method: "get",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-              },
-            })
+            fetch(
+              `http://${process.env.REACT_APP_API_URL}/profile/${data.id}`,
+              {
+                method: "get",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: token,
+                },
+              }
+            )
               .then((resp) => resp.json())
               .then((user) => {
                 if (user && user.email) {
