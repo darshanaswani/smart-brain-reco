@@ -2,6 +2,10 @@
   "name": "facerecognitionbrain",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x",
+    "npm": "8.5.5"
+  },
   "dependencies": {
     "bootstrap": "^5.2.1",
     "react": "^17.0.2",
